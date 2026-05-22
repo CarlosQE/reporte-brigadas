@@ -1,0 +1,88 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font: 'Inter', system-ui, sans-serif;
+  --c-bg: #f8f9fa;
+  --c-surface: #ffffff;
+  --c-border: #e5e7eb;
+  --c-border-strong: #d1d5db;
+  --c-text: #111827;
+  --c-text-2: #6b7280;
+  --c-text-3: #9ca3af;
+  --c-primary: #1d4ed8;
+  --c-primary-light: #eff6ff;
+  --c-success: #059669;
+  --c-danger: #dc2626;
+  --c-warning: #d97706;
+  --c-purple: #7c3aed;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+}
+
+body {
+  font-family: var(--font);
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--c-border-strong); border-radius: 3px; }
+
+/* Inputs */
+input[type="text"], input[type="search"] {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--c-text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+input[type="text"]:focus, input[type="search"]:focus {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px rgba(29,78,216,0.1);
+}
+
+/* Buttons */
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: 1px solid var(--c-border-strong);
+  background: var(--c-surface);
+  color: var(--c-text);
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  font-size: 13px;
+  transition: background 0.15s, border-color 0.15s;
+}
+button:hover { background: var(--c-bg); }
+button.primary {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: #fff;
+  font-weight: 500;
+}
+button.primary:hover { background: #1e40af; }
+
+/* Recharts tooltip override */
+.recharts-tooltip-wrapper { z-index: 100; }
+
+/* ── Print styles ─────────────────────────────── */
+@media print {
+  body { background: #fff; font-size: 11px; }
+  .no-print { display: none !important; }
+  .print-area { padding: 0 !important; }
+  .report-header { margin-bottom: 16px !important; padding: 0 !important; }
+  .indicator-grid { column-gap: 12px !important; row-gap: 12px !important; }
+  .card { break-inside: avoid; box-shadow: none !important; border: 1px solid #e5e7eb !important; }
+  h1 { font-size: 18px !important; }
+  .recharts-wrapper { page-break-inside: avoid; }
+}
